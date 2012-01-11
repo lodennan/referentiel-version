@@ -1,0 +1,66 @@
+#{extends 'main.html' /} #{set title:'Releases' /}
+
+<div class="content">
+	<div class="page-header">
+		<h1>
+			Application ${app.name}
+			<button id="addReleaseButton" class="pull-right btn primary">Ajouter une release</button>
+		</h1>
+	</div>
+	<div id="addRelease" class="row">
+		<div class="span15">
+			#{form @Application.addrelease(app.id)}
+			<fieldset>
+				<legend>Ajout d'une release</legend>
+				<div class="clearfix">
+					<label for="xlInput">Numero de version :</label>
+					<div class="input">
+						<input class="xlarge" id="xlInput" name="version" size="30" type="text" />
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="clearfix">
+					<label for="textarea">Description de la release :</label>
+					<div class="input">
+						<textarea class="xxlarge" id="description" name="description" rows="3"></textarea>
+						<span class="help-block"> Block of help text to describe
+							the field above if need be. </span>
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="actions">
+					<input type="submit" class="btn primary" value="Ajouter cette release">&nbsp;
+					<button type="reset" class="btn">Annuler</button>
+				</div>
+			</fieldset>
+			#{/form}
+		</div>
+	</div>
+	<div class="row">
+		<div class="span15">
+			<table>
+				<thead>
+					<tr>
+						<th>Numéro de version</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					#{list items:releases, as:'release'}
+					<tr>
+						<td>${release.version}</td>
+						<td>${release.description}</td>
+					</tr>
+					#{/list}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('#addRelease').hide();
+	$('#addReleaseButton').click(function() {
+		$('#addRelease').toggle();
+	});
+</script>

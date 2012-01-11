@@ -1,0 +1,79 @@
+#{extends 'main.html' /} #{set title:'Liste de domaines Weblogic' /}
+
+<div class="content">
+	<div class="page-header">
+		<h1>
+			Liste des domaines Weblogic
+			<button id="addDomainnButton" class="pull-right btn primary">Ajouter un domaine</button>
+		</h1>
+	</div>
+	<div id="addDomain" class="row">
+		<div class="span15">
+			#{form @Application.addDomain()}
+			<fieldset>
+				<legend>Ajout d'un domaine</legend>
+				<div class="clearfix">
+					<label for="xlInput">Nom du domaine :</label>
+					<div class="input">
+						<input class="xlarge" id="xlInput" name="name" size="30" type="text" />
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="clearfix">
+					<label for="xlInput">Version du serveur :</label>
+					<div class="input">
+						<input class="xlarge" id="xlInput" name="serverVersion" size="30" type="text" />
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="clearfix">
+					<label for="textarea">Description du domaine :</label>
+					<div class="input">
+						<textarea class="xxlarge" id="description" name="description" rows="3"></textarea>
+						<span class="help-block"> Block of help text to describe
+							the field above if need be. </span>
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="actions">
+					<input type="submit" class="btn primary" value="Ajouter ce domaine">&nbsp;
+					<button id="cancelButton" type="reset" class="btn">Annuler</button>
+				</div>
+			</fieldset>
+			#{/form}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span15">
+			<table>
+				<thead>
+					<tr>
+						<th>Nom du domaine</th>
+						<th>Version du serveur</th>
+					</tr>
+				</thead>
+				<tbody>
+					#{list items:domains, as:'domain'}
+					<tr>
+						<td><a href="@{Application.apps(domain.id)}">${domain.name}</a>
+						</td>
+						<td>${domain.serverVersion}</td>
+					</tr>
+					#{/list}
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('#addDomain').hide();
+	$('#addDomainnButton').click(function() {
+		$('#addDomain').toggle();
+	});
+	$('#cancelButton').click(function() {
+		$('#addDomain').toggle();
+	});
+</script>
