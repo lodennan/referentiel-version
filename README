@@ -1,10 +1,10 @@
 Application fonctionnant avec Play! framework.
 Permet le suivi de versions des applications d'un domaine Weblogic.
 
-Lancement de l'application la première fois:
+Lancement de l'application la premiï¿½re fois:
 play deps referentiel-version --sync
 play run referentiel-version
 
 NB: 
-- L'application est configurée pour stocker ses données dans une base de données H2 (fichier). Pour changer ceci, editer le fichier conf/application.conf et modifier les paramètres liées aux bases de données.
-- N'oubliez pas de changer la clé (application.secret) dans le fichier conf/application.conf !
+- L'application est configurï¿½e pour stocker ses donnï¿½es dans une base de donnï¿½es H2 (fichier). Pour changer ceci, Ã©diter le fichier conf/application.conf et modifier les paramï¿½tres liï¿½s aux bases de donnï¿½es.
+- N'oubliez pas de changer la clï¿½ (application.secret) dans le fichier conf/application.conf !
